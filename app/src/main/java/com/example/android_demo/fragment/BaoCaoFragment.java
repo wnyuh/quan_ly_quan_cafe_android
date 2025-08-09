@@ -130,7 +130,7 @@ public class BaoCaoFragment extends Fragment {
     private void thongKeHomNay() {
         try {
             Date today = new Date();
-            List<DonHang> donHangHomNay = database.donHangDao().layDonHangTheoNgay(today);
+            List<DonHang> donHangHomNay = database.donHangDao().layDonHangTheoNgay();
             
             int soDonHangHomNay = donHangHomNay.size();
             double doanhThuHomNay = 0;
