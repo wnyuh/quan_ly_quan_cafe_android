@@ -32,12 +32,12 @@ public interface DonHangDao {
     
     @Query("SELECT * FROM don_hang WHERE banId = :banId AND trangThai IN ('DANG_CHO', 'DANG_CHE_BIEN') ORDER BY thoiGianDat ASC")
     List<DonHang> layDonHangDangXuLyTheoBan(int banId);
-    
-    @Query("SELECT * FROM don_hang WHERE DATE(thoiGianDat) = DATE(:ngay) ORDER BY thoiGianDat DESC")
-    List<DonHang> layDonHangTheoNgay(Date ngay);
-    
-    @Query("SELECT SUM(tongTien) FROM don_hang WHERE trangThai = 'HOAN_THANH' AND DATE(thoiGianDat) = DATE(:ngay)")
-    Double tinhTongDoanhThuTheoNgay(Date ngay);
+
+    @Query("SELECT * FROM don_hang WHERE DATE(thoiGianDat / 1000, 'unixepoch', 'localtime') = DATE('now', 'localtime') ORDER BY thoiGianDat DESC")
+    List<DonHang> layDonHangTheoNgay();
+
+    @Query("SELECT SUM(tongTien) FROM don_hang WHERE trangThai = 'HOAN_THANH' AND DATE(thoiGianDat / 1000, 'unixepoch', 'localtime') = DATE('now', 'localtime')")
+    Double tinhTongDoanhThuTheoNgay();
     
     @Query("SELECT SUM(tongTien) FROM don_hang WHERE banId = :banId AND trangThai = 'HOAN_THANH'")
     Double tinhTongDoanhThuTheoBan(int banId);
