@@ -1,0 +1,85 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Coffee cup main body -->
+    <path android:pathData="M35,40 L35,75 Q35,80 40,80 L68,80 Q73,80 73,75 L73,40 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="35"
+                android:startY="40"
+                android:endX="73"
+                android:endY="80"
+                android:type="linear">
+                <item android:color="#FFFFFF" android:offset="0.0" />
+                <item android:color="#F5F5F5" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    
+    <!-- Coffee liquid -->
+    <path android:pathData="M38,43 L38,72 Q38,75 41,75 L67,75 Q70,75 70,72 L70,43 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="38"
+                android:startY="43"
+                android:endX="70"
+                android:endY="75"
+                android:type="linear">
+                <item android:color="#6B4423" android:offset="0.0" />
+                <item android:color="#4A2C17" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    
+    <!-- Coffee foam/cream -->
+    <path 
+        android:fillColor="#F8F8F8"
+        android:pathData="M40,45 Q54,42 68,45 Q68,48 54,48 Q40,48 40,45 Z" />
+    
+    <!-- Cup handle -->
+    <path 
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M73,50 Q78,50 78,58 Q78,66 73,66" />
+    
+    <!-- Steam wisps -->
+    <path 
+        android:fillColor="#00000000"
+        android:strokeColor="#E0E0E0"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M46,35 Q44,30 46,25 Q48,20 46,15" />
+        
+    <path 
+        android:fillColor="#00000000"
+        android:strokeColor="#E0E0E0"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M54,35 Q52,30 54,25 Q56,20 54,15" />
+        
+    <path 
+        android:fillColor="#00000000"
+        android:strokeColor="#E0E0E0"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M62,35 Q60,30 62,25 Q64,20 62,15" />
+    
+    <!-- Coffee bean accent -->
+    <path 
+        android:fillColor="#8B4513"
+        android:pathData="M48,90 Q54,87 60,90 Q60,93 54,93 Q48,93 48,90 Z" />
+    
+    <!-- Coffee bean line -->
+    <path 
+        android:fillColor="#00000000"
+        android:strokeColor="#5D2E0A"
+        android:strokeWidth="1"
+        android:pathData="M54,87 L54,93" />
+    
+</vector>
