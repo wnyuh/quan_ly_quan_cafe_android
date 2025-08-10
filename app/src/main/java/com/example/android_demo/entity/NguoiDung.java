@@ -12,7 +12,7 @@ public class NguoiDung {
     
     private String tenDangNhap;
     private String matKhau;
-    private String vaiTro; // "ADMIN" hoặc "NHAN_VIEN"
+    private String vaiTro;
     private String hoTen;
     private String email;
 
