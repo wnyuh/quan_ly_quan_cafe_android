@@ -87,8 +87,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
     private void caiDatMenu() {
         Menu menu = navigationView.getMenu();
         boolean laAdmin = "ADMIN".equals(vaiTroHienTai);
-        
-        // Hiển thị menu dành cho admin
+
         menu.findItem(R.id.nav_quan_ly_san_pham).setVisible(laAdmin);
         menu.findItem(R.id.nav_quan_ly_nguoi_dung).setVisible(laAdmin);
         menu.findItem(R.id.nav_quan_ly_ban).setVisible(laAdmin);
@@ -96,7 +95,6 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
     }
     
     private void hienThiFragmentMacDinh() {
-        // Hiển thị sơ đồ bàn làm màn hình chính
         Fragment fragment = new SoDoBanFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frameLayout, fragment)
@@ -156,12 +154,11 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
     }
     
     private void dangXuat() {
-        // Xóa thông tin đăng nhập
+
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-        
-        // Chuyển về màn hình đăng nhập
+
         Intent intent = new Intent(this, DangNhapActivity.class);
         startActivity(intent);
         finish();

@@ -41,7 +41,6 @@ public class DangNhapActivity extends AppCompatActivity {
     }
     
     private void kiemTraDangNhap() {
-        // Kiểm tra nếu đã đăng nhập trước đó
         int nguoiDungId = sharedPreferences.getInt("nguoi_dung_id", -1);
         if (nguoiDungId != -1) {
             chuyenDenTrangChu();
@@ -60,12 +59,10 @@ public class DangNhapActivity extends AppCompatActivity {
             Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return;
         }
-        
-        // Kiểm tra đăng nhập trong database
+
         NguoiDung nguoiDung = database.nguoiDungDao().dangNhap(tenDangNhap, matKhau);
         
         if (nguoiDung != null) {
-            // Lưu thông tin đăng nhập
             luuThongTinDangNhap(nguoiDung);
             Toast.makeText(this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
             chuyenDenTrangChu();
