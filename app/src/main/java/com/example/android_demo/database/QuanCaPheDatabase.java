@@ -47,8 +47,7 @@ public abstract class QuanCaPheDatabase extends RoomDatabase {
                     .fallbackToDestructiveMigration()
                     .allowMainThreadQueries() // Chỉ để development, nên xóa trong production
                     .build();
-                    
-                    // Khởi tạo dữ liệu mẫu
+
                     khoiTaoDuLieuMau();
                 }
             }

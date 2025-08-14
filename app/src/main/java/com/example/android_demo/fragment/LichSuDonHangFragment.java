@@ -30,7 +30,10 @@ public class LichSuDonHangFragment extends Fragment implements DonHangAdapter.On
     private QuanCaPheDatabase database;
     private List<DonHang> danhSachDonHang;
     private boolean laAdmin = false;
-    
+
+    private int nguoiDungId = -1;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,11 +61,12 @@ public class LichSuDonHangFragment extends Fragment implements DonHangAdapter.On
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("QuanCaPhe", MODE_PRIVATE);
         String vaiTro = sharedPreferences.getString("vai_tro", "");
         laAdmin = "ADMIN".equals(vaiTro);
+        nguoiDungId = sharedPreferences.getInt("nguoi_dung_id", -1);
     }
     
     private void khoiTaoRecyclerView() {
         danhSachDonHang = new ArrayList<>();
-        adapter = new DonHangAdapter(danhSachDonHang, laAdmin);
+        adapter = new DonHangAdapter(danhSachDonHang, laAdmin, nguoiDungId);
         adapter.setOnDonHangClickListener(this);
         
         rvLichSuDonHang.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -98,8 +102,11 @@ public class LichSuDonHangFragment extends Fragment implements DonHangAdapter.On
     
     @Override
     public void onCapNhatTrangThai(DonHang donHang) {
-        if (laAdmin) {
+        boolean laChuDon = (donHang.getNguoiDungId() == nguoiDungId);
+        if (laAdmin || laChuDon) {
             hienThiDialogCapNhatTrangThai(donHang);
+        }else {
+            Toast.makeText(getContext(), "Bạn không có quyền sửa đơn này", Toast.LENGTH_SHORT).show();
         }
     }
     

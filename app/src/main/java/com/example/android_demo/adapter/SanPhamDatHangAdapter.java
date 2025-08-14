@@ -114,7 +114,8 @@ public class SanPhamDatHangAdapter extends RecyclerView.Adapter<SanPhamDatHangAd
             });
         }
     }
-    
+
+    // Hàm tiện ích: nạp ảnh vào ImageView bằng Glide
     private void loadImageIntoView(String imagePath, ImageView imageView) {
         if (!TextUtils.isEmpty(imagePath)) {
             if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
