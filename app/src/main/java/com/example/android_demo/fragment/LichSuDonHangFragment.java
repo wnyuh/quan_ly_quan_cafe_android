@@ -105,8 +105,6 @@ public class LichSuDonHangFragment extends Fragment implements DonHangAdapter.On
         boolean laChuDon = (donHang.getNguoiDungId() == nguoiDungId);
         if (laAdmin || laChuDon) {
             hienThiDialogCapNhatTrangThai(donHang);
-        }else {
-            Toast.makeText(getContext(), "Bạn không có quyền sửa đơn này", Toast.LENGTH_SHORT).show();
         }
     }
     
