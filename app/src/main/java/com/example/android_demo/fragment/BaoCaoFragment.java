@@ -49,7 +49,7 @@ public class BaoCaoFragment extends Fragment {
     }
     
     private void khoiTaoView(View view) {
-        // Text views for displaying statistics
+
         tvTongDoanhThu = view.findViewById(R.id.tvTongDoanhThu);
         tvTongDonHang = view.findViewById(R.id.tvTongDonHang);
         tvDonHangHomNay = view.findViewById(R.id.tvDonHangHomNay);
@@ -58,8 +58,7 @@ public class BaoCaoFragment extends Fragment {
         tvDonHangDaHuy = view.findViewById(R.id.tvDonHangDaHuy);
         tvSanPhamBanChay = view.findViewById(R.id.tvSanPhamBanChay);
         tvKhachHangThanThiet = view.findViewById(R.id.tvKhachHangThanThiet);
-        
-        // Card views for visual grouping
+
         cardTongDoanhThu = view.findViewById(R.id.cardTongDoanhThu);
         cardTongDonHang = view.findViewById(R.id.cardTongDonHang);
         cardHomNay = view.findViewById(R.id.cardHomNay);
@@ -81,9 +80,7 @@ public class BaoCaoFragment extends Fragment {
                 thongKeSanPham();
                 
             } catch (Exception e) {
-                getActivity().runOnUiThread(() -> {
-                    // Handle error - could show error message in UI
-                });
+                getActivity().runOnUiThread(() -> { });
             }
         }).start();
     }
@@ -91,8 +88,8 @@ public class BaoCaoFragment extends Fragment {
     private void thongKeDoanhThu() {
         try {
             List<DonHang> danhSachHoanThanh = database.donHangDao().layDonHangTheoTrangThai("HOAN_THANH");
+
             double tongDoanhThu = 0;
-            
             for (DonHang donHang : danhSachHoanThanh) {
                 tongDoanhThu += donHang.getTongTien();
             }
@@ -182,8 +179,6 @@ public class BaoCaoFragment extends Fragment {
     
     private void thongKeSanPham() {
         try {
-            // For now, just show placeholder text
-            // This could be enhanced to show actual best-selling products
             getActivity().runOnUiThread(() -> {
                 tvSanPhamBanChay.setText("Cà phê đen, Bánh croissant, Trà chanh");
                 tvKhachHangThanThiet.setText("Thống kê khách hàng đang phát triển...");
@@ -200,7 +195,6 @@ public class BaoCaoFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // Refresh data when fragment becomes visible
         taiDuLieuBaoCao();
     }
 }

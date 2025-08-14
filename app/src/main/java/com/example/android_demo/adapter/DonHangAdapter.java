@@ -19,15 +19,18 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
     private List<DonHang> danhSachDonHang;
     private OnDonHangClickListener listener;
     private boolean laAdmin;
+
+    private int nguoiDungId;
     
     public interface OnDonHangClickListener {
         void onXemChiTiet(DonHang donHang);
         void onCapNhatTrangThai(DonHang donHang);
     }
     
-    public DonHangAdapter(List<DonHang> danhSachDonHang, boolean laAdmin) {
+    public DonHangAdapter(List<DonHang> danhSachDonHang, boolean laAdmin, int nguoiDungId ) {
         this.danhSachDonHang = danhSachDonHang;
         this.laAdmin = laAdmin;
+        this.nguoiDungId = nguoiDungId;
     }
     
     public void setOnDonHangClickListener(OnDonHangClickListener listener) {
@@ -104,12 +107,14 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.DonHangV
             }
             
             // Hiển thị nút cập nhật trạng thái cho admin
-            if (laAdmin && !"HUY".equals(donHang.getTrangThai()) && !"HOAN_THANH".equals(donHang.getTrangThai())) {
-                btnCapNhatTrangThai.setVisibility(View.VISIBLE);
-            } else {
-                btnCapNhatTrangThai.setVisibility(View.GONE);
-            }
-            
+            boolean laChuDon = (donHang.getNguoiDungId() == nguoiDungId);
+            boolean chuaKhoaTrangThai = !"HUY".equals(donHang.getTrangThai())
+                    && !"HOAN_THANH".equals(donHang.getTrangThai());
+            boolean choPhepCapNhat = (laAdmin || laChuDon) && chuaKhoaTrangThai;
+
+            btnCapNhatTrangThai.setVisibility(choPhepCapNhat ? View.VISIBLE : View.GONE);
+
+
             // Sự kiện click
             btnXemChiTiet.setOnClickListener(v -> {
                 if (listener != null) {
